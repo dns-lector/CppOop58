@@ -1,4 +1,27 @@
+#include "intro.h"
+#include <iostream>
+#include "fraction.h"
 
+void intro() {
+	// запуск демонстрації
+	std::cout << "Intro to OOP" << std::endl;
+	// створення об'єктів
+	fraction_t frac1;   // статичне оголошення - об'єкт у стеку
+	fraction_t* frac2 = new fraction_t;  // динамічне оголошення - об'єкт у "купі"
+	std::cout                                // без ініціалізації бачимо випадкові числа 
+		<< frac1.to_string() << std::endl    // до об'єктів звертаємось через "."
+		<< frac2->to_string() << std::endl;  // до покажчиків - через "->"
+
+	// за допомогою конструкторів з параметрами можна задавати початкові значення
+	fraction_t frac3(10);
+	fraction_t* frac4 = new fraction_t(1, 10);
+	std::cout
+		<< frac3.to_string() << std::endl
+		<< frac4->to_string() << std::endl;
+
+	delete frac2;
+	delete frac4;
+}
 
 /*
 ООП. Вступ.

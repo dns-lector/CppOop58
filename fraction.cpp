@@ -1,6 +1,21 @@
 #include "fraction.h"
 #include <format>
 
+fraction_t::fraction_t() {  // конструктор без параметрів - констуктор за замовчанням
+	numerator = 0;          // f = new fraction_t  або  f = new fraction_t()
+	denominator = 1;
+}
+
+fraction_t::fraction_t(int n) {  // конструктор з параметрами, його слід зазначати
+	numerator = n;               // прямо (не за замовчанням) f = new fraction_t(10)
+	denominator = 1;             // Присвоювання значень
+}
+
+fraction_t::fraction_t(int numerator, int denominator) : // ініціалізація полів
+	numerator{ numerator }, denominator{ denominator }   // на відміну від присвоювання
+{                                                        // дозволяє задавати значення
+}                                                        // незмінним полям (константам)
+
 int fraction_t::get_numerator() {
 	return numerator;
 }
@@ -20,7 +35,11 @@ void fraction_t::set_denominator(int denominator) {
 }
 
 std::string fraction_t::to_string() {
-	return std::format("", numerator, denominator);
+	// форматування рядків - заповнення "формату" - рядка з плейсхолдерами
+	//                    v   v - placeholders
+	return std::format("({0}/{1})", numerator, denominator);
+	//                                  ^           ^
+	//               дані, які будуть підставлені на міце плейсхолдерів
 }
 
 /*
