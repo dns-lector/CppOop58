@@ -37,6 +37,6 @@ public:                        // За рекомендаціями ООП по�
 	fraction_t operator +(const fraction_t& other);
 	// Особливу роль грають оператори присвоювання (=)
 	// Вони також поділяються на оператори копіювання та перенесення
-	fraction_t operator =(const fraction_t& other);    // copy
-	fraction_t operator =(fraction_t&& other);         // move
+	fraction_t operator =(const fraction_t& other);      // copy
+	fraction_t operator =(fraction_t&& other) noexcept;  // move
 };

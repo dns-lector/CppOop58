@@ -136,14 +136,26 @@ fraction_t fraction_t::operator +(const fraction_t& other) {
 fraction_t fraction_t::operator =(const fraction_t& other) {
 	this->numerator = other.numerator;
 	this->denominator = other.denominator;
+	if (other.name != NULL) {
+		size_t len = strlen(other.name) + 1;
+		this->name = new char[len];
+		strcpy(this->name, other.name);
+		std::cout << "Copy assignment: copy from " << (void*)other.name << " to "
+		 	<< (void*)(this->name) << std::endl;
+	}
+	else {
+		this->name = NULL;
+	}
+	return *this;
 }
 
-fraction_t fraction_t::operator =(fraction_t&& other) {
+fraction_t fraction_t::operator =(fraction_t&& other) noexcept {
 	this->numerator = other.numerator;
 	this->denominator = other.denominator;
 	this->name = other.name;
 	other.name = NULL;
 	std::cout << "Move assignment: take from " << (void*)this->name << std::endl;
+	return *this;
 }
 
 /*
