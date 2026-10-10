@@ -39,8 +39,8 @@ fraction_t::fraction_t(fraction_t& other) {
 	if (other.name != NULL) {
 		this->name = new char[strnlen_s(other.name, 100) + 1];
 		strcpy_s(this->name, 100, other.name);
-		std::cout << "Copy constructor: copy from " << (void*)other.name << " to "
-			<< (void*)(this->name) << std::endl;
+		// std::cout << "Copy constructor: copy from " << (void*)other.name << " to "
+		// 	<< (void*)(this->name) << std::endl;
 	}
 	else {
 		this->name = NULL;
@@ -50,6 +50,34 @@ fraction_t::fraction_t(fraction_t& other) {
 	// A[1/2"Half"] - A[1,2,0x123]     |
 	// B = copy A   - B[1,2,0x123] - strcpy - B[1,2,0x567]
 	// delete A - звільнення 0x123 --> В посилається на видалений ресурс
+
+	/*        A              B               0x123 
+	------[1,2,0x123]----[1,2,0x123]--------"Half\0"--------------------------------
+
+	A.name = "1/2"
+			  A              B               0x123
+	------[1,2,0x123]----[1,2,0x123]--------"1/2\0"---------------------------------
+	B.name - ? "1/2"  -- неправильно
+
+		      A              B               0x123          0x567
+	------[1,2,0x123]----[1,2,0x567]--------"Half\0"--------"Half\0"----------------
+  
+	*/
+}
+
+fraction_t::fraction_t(fraction_t&& other) {
+	/* Конструктор перенесення (move constructor) викликається тоді, коли
+	*  інший об'єкт (other) підлягає знищенню, наприклад, коли він передається
+	*  як результат роботи функції.
+	* 
+	* Конструктор перенесення може "забрати" ресурс іншого об'єкта
+	* замість того, щоб створювати копію. Але, щоб знищення не запустилось
+	* автоматично, слід підмінити ресурс іншого об'єкту на NULL
+	*/
+	this->numerator = other.numerator;
+	this->denominator = other.denominator;
+	this->name = other.name;
+	other.name = NULL;
 }
 
 char* fraction_t::get_name() {
