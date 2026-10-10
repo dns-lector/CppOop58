@@ -126,6 +126,13 @@ fraction_t::~fraction_t() {
 	}
 }
 
+fraction_t fraction_t::operator +(const fraction_t& other) {
+	return fraction_t(
+		this->numerator * other.denominator + this->denominator * other.numerator,
+		this->denominator * other.denominator);
+	// a/b + c/d = (ad+bc)/bd
+}
+
 /*
 Д.З. Описати клас, що задає вектор на площині (vector_2 / vector2_t)
 склад: 2 поля-координати х та у (дробові)
