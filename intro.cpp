@@ -19,7 +19,7 @@ void intro() {
 		<< frac3.to_string() << std::endl
 		<< frac4->to_string() << std::endl;
 
-	fraction_t frac5(1, 2, (char*)"Half");
+	fraction_t frac5(1, 2, new char[] {"Half"} );
 	fraction_t* frac6 = new fraction_t(frac5);
 	std::cout
 		<< frac5.to_string() << std::endl

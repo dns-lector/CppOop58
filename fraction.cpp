@@ -37,7 +37,8 @@ fraction_t::fraction_t(fraction_t& other) {
 	this->denominator = other.denominator;
 	// для референсного ресурсу створюємо копію
 	if (other.name != NULL) {
-		this->name = new char[strnlen_s(other.name, 100) + 1];
+		size_t len = strnlen_s(other.name, 100) + 1;
+		this->name = new char[len];
 		strcpy_s(this->name, 100, other.name);
 		// std::cout << "Copy constructor: copy from " << (void*)other.name << " to "
 		// 	<< (void*)(this->name) << std::endl;
@@ -65,7 +66,7 @@ fraction_t::fraction_t(fraction_t& other) {
 	*/
 }
 
-fraction_t::fraction_t(fraction_t&& other) {
+fraction_t::fraction_t(fraction_t&& other) noexcept {
 	/* Конструктор перенесення (move constructor) викликається тоді, коли
 	*  інший об'єкт (other) підлягає знищенню, наприклад, коли він передається
 	*  як результат роботи функції.
