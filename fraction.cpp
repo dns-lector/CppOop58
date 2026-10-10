@@ -133,6 +133,19 @@ fraction_t fraction_t::operator +(const fraction_t& other) {
 	// a/b + c/d = (ad+bc)/bd
 }
 
+fraction_t fraction_t::operator =(const fraction_t& other) {
+	this->numerator = other.numerator;
+	this->denominator = other.denominator;
+}
+
+fraction_t fraction_t::operator =(fraction_t&& other) {
+	this->numerator = other.numerator;
+	this->denominator = other.denominator;
+	this->name = other.name;
+	other.name = NULL;
+	std::cout << "Move assignment: take from " << (void*)this->name << std::endl;
+}
+
 /*
 Д.З. Описати клас, що задає вектор на площині (vector_2 / vector2_t)
 склад: 2 поля-координати х та у (дробові)

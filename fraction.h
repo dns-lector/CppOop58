@@ -35,4 +35,8 @@ public:                        // За рекомендаціями ООП по�
 	// другий аргумент (other) передається за посиланням (&) і для унеможливлення
 	// його змін додається const
 	fraction_t operator +(const fraction_t& other);
+	// Особливу роль грають оператори присвоювання (=)
+	// Вони також поділяються на оператори копіювання та перенесення
+	fraction_t operator =(const fraction_t& other);    // copy
+	fraction_t operator =(fraction_t&& other);         // move
 };
