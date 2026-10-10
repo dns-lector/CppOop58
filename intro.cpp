@@ -25,6 +25,10 @@ void intro() {
 		<< frac5.to_string() << std::endl
 		<< frac6->to_string() << std::endl;
 
+	fraction_t d = std::move( fraction_t::decil() );
+	std::cout
+		<< d.to_string() << std::endl;
+
 	delete frac2;
 	delete frac4;
 	delete frac6;

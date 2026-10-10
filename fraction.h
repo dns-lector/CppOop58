@@ -23,4 +23,9 @@ public:                        // За рекомендаціями ООП по�
 	fraction_t(fraction_t&&) noexcept;  // конструктор переносу (move constructor)
 
 	~fraction_t();               // деструктор - викликається при знищенні об'єкта
+
+	static fraction_t decil() {
+		fraction_t d(1, 10, new char[] {"Decil"});
+		return d;
+	}
 };
