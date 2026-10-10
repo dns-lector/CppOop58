@@ -114,7 +114,7 @@ void fraction_t::set_denominator(int denominator) {
 std::string fraction_t::to_string() {
 	// форматування рядків - заповнення "формату" - рядка з плейсхолдерами
 	//                    v   v - placeholders
-	return std::format("({0}/{1})", numerator, denominator);
+	return std::format("({0}/{1}{2})", numerator, denominator, (name == NULL ? "" : name));
 	//                                  ^           ^
 	//               дані, які будуть підставлені на міце плейсхолдерів
 }
@@ -127,9 +127,20 @@ fraction_t::~fraction_t() {
 }
 
 fraction_t fraction_t::operator +(const fraction_t& other) {
+	char* new_name = NULL;
+	if (this->name != NULL && other.name != NULL) {
+		// якщо в обох дробах є імена, то поєднаємо їх через "+"
+		size_t len1 = strlen(this->name);
+		size_t len = len1 + strlen(other.name) + 2;
+		new_name = new char[len];                 // [__________]
+		strcpy(new_name, this->name);             // [Half______]
+		strcpy(new_name + len1, "+");             // [Half+_____]
+		strcpy(new_name + len1 + 1, other.name);  // [Half+Decil]
+	}
 	return fraction_t(
 		this->numerator * other.denominator + this->denominator * other.numerator,
-		this->denominator * other.denominator);
+		this->denominator * other.denominator,
+		new_name);
 	// a/b + c/d = (ad+bc)/bd
 }
 
@@ -148,7 +159,6 @@ fraction_t fraction_t::operator =(const fraction_t& other) {
 	}
 	return *this;
 }
-
 fraction_t fraction_t::operator =(fraction_t&& other) noexcept {
 	this->numerator = other.numerator;
 	this->denominator = other.denominator;
