@@ -43,6 +43,11 @@ void intro() {
 	                // оператором +, підлягає руйнуванню f = (move) <--ret--(f + f5) 
 	std::cout << f.to_string() << std::endl;  
 
+	f = f * frac5;  
+	std::cout << f.to_string() << std::endl;
+
+	f = f / frac5;
+	std::cout << f.to_string() << std::endl;
 
 	delete frac2;
 	delete frac4;

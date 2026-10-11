@@ -46,4 +46,7 @@ public:                          // За рекомендаціями ООП п�
 };
 
 // оператори можуть бути оголошені поза класом
-fraction_t operator *(const fraction_t& f1, const fraction_t& f2);
+// традиція: зовні описуються оператори, що не змінюють об'єкти (*, / тощо)
+// в середині класу - ті, що змінюють (+=, = тощо)
+fraction_t operator *(const fraction_t& f1, const fraction_t& f2);  // friend
+fraction_t operator /(const fraction_t& f1, const fraction_t& f2);  // non-friend

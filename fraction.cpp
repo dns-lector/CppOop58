@@ -175,8 +175,15 @@ fraction_t& fraction_t::operator =(fraction_t&& other) noexcept {
 
 fraction_t operator *(const fraction_t& f1, const fraction_t& f2) {
 	return fraction_t(
-		f1.numerator * f2.numerator,
-		f1.denominator * f2.denominator
+		f1.numerator * f2.numerator,     // дружні функції мають доступ
+		f1.denominator * f2.denominator  // до приватних полів об'єкту
+	);
+}
+
+fraction_t operator /(const fraction_t& f1, const fraction_t& f2) {
+	return fraction_t(
+		f1.get_numerator() * f2.get_denominator(),  // функції, що не є дружніми
+		f1.get_denominator() * f2.get_numerator()   // мають доступ лише до аксессорів
 	);
 }
 
