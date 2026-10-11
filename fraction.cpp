@@ -89,7 +89,7 @@ fraction_t::fraction_t(fraction_t&& other) noexcept {
 
 
 
-char* fraction_t::get_name() {
+char* fraction_t::get_name() const {
 	return name;
 }
 
@@ -97,11 +97,11 @@ void fraction_t::set_name(char* name) {
 	this->name = name;
 }
 
-int fraction_t::get_numerator() {
+int fraction_t::get_numerator() const {
 	return numerator;
 }
 
-int fraction_t::get_denominator() {
+int fraction_t::get_denominator() const {
 	return denominator;
 }
 
@@ -172,6 +172,25 @@ fraction_t& fraction_t::operator =(fraction_t&& other) noexcept {
 	std::cout << "Move assignment: take from " << (void*)this->name << std::endl;
 	return *this;
 }
+
+fraction_t operator *(const fraction_t& f1, const fraction_t& f2) {
+	return fraction_t(
+		f1.numerator * f2.numerator,
+		f1.denominator * f2.denominator
+	);
+}
+
+/*
+Правило опису класів (The Rule Of Six):
+При описі класів необхідно обов'язково включити до опису
+- конструктор за замовчанням
+- конструктор копіювання
+- конструктор перенесення
+- оператор = копіювання
+- оператор = перенесення
+- деструктор
+~ інколи додають параметризований конструктор
+*/
 
 /*
 Д.З. Описати клас, що задає вектор на площині (vector_2 / vector2_t)

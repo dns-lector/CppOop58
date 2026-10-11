@@ -35,12 +35,14 @@ void intro() {
 	std::cout << "-------------------------" << std::endl;
 	fraction_t f;   // default constructor: (0/1)
 	std::cout << f.to_string() << std::endl;
-	f = d;          // copy assignment (operator =): (1/10Decil)
+	f = d;          // copy assignment (operator =(&)): (1/10Decil)
 	std::cout << f.to_string() << std::endl;
 
 	std::cout << "-------------------------" << std::endl;
-	f = f + frac5;
-	std::cout << f.to_string() << std::endl;
+	f = f + frac5;  // Move assignment (operator =(&&)): результат додавання, що повертається
+	                // оператором +, підлягає руйнуванню f = (move) <--ret--(f + f5) 
+	std::cout << f.to_string() << std::endl;  
+
 
 	delete frac2;
 	delete frac4;
