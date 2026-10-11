@@ -50,8 +50,9 @@ void intro() {
 	std::cout << f << std::endl;
 
 	std::cout << -f << std::endl;
+
 	f += 1;
-	std::cout << f << std::endl;
+	std::cout << "f += 1: " << f << std::endl;
 	f += frac5;
 	std::cout << f << std::endl;
 

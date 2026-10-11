@@ -202,12 +202,26 @@ fraction_t operator -(const fraction_t& f) {
 void fraction_t::operator += (const fraction_t& other) {
 	this->numerator = this->numerator * other.denominator + this->denominator * other.numerator;
 	this->denominator = this->denominator * other.denominator;
+	reduce();
 }
-
 void fraction_t::operator += (int n) {
 	this->numerator += n * this->denominator;
+	reduce();
 }
-
+int fraction_t::gcd(int a, int b) {
+	if (a < 0) a = -a;
+	if (b < 0) b = -b;
+	if (b > a) return gcd(b, a);
+	if (b == 0) return a;
+	return gcd(b, a % b);
+}
+void fraction_t::reduce() {
+	int g = gcd(numerator, denominator);
+	if (g != 1) {
+		numerator /= g;
+		denominator /= g;
+	}
+}
 /*
 Правило опису класів (The Rule Of Six):
 При описі класів необхідно обов'язково включити до опису
