@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <iostream>
 
 class fraction_t {               // клас - це тип даних, тому є традиції додавати "_t"
 private:                         // склад класу поділяється за "видимістю" на декілька категорій
@@ -13,7 +14,7 @@ public:                          // За рекомендаціями ООП п�
 	void set_denominator(int);
 	char* get_name() const;
 	void set_name(char*);
-	std::string to_string();
+	std::string to_string() const;
 
 	fraction_t();                // конструктори - спец. методи, які автоматично запускаються
 	fraction_t(int);             // коли створюються об'єкти даного класу. Вони не мають 
@@ -50,3 +51,5 @@ public:                          // За рекомендаціями ООП п�
 // в середині класу - ті, що змінюють (+=, = тощо)
 fraction_t operator *(const fraction_t& f1, const fraction_t& f2);  // friend
 fraction_t operator /(const fraction_t& f1, const fraction_t& f2);  // non-friend
+// а також деякі оператори, що в якості першого параметра отримують не даний об'єкт
+std::ostream& operator <<(std::ostream& out, const fraction_t& f);

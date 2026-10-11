@@ -115,7 +115,7 @@ void fraction_t::set_denominator(int denominator) {
 	this->denominator = denominator;
 }
 
-std::string fraction_t::to_string() {
+std::string fraction_t::to_string() const {
 	// форматування рядків - заповнення "формату" - рядка з плейсхолдерами
 	//                    v   v - placeholders
 	return std::format("({0}/{1}{2})", numerator, denominator, (name == NULL ? "" : name));
@@ -185,6 +185,11 @@ fraction_t operator /(const fraction_t& f1, const fraction_t& f2) {
 		f1.get_numerator() * f2.get_denominator(),  // функції, що не є дружніми
 		f1.get_denominator() * f2.get_numerator()   // мають доступ лише до аксессорів
 	);
+}
+
+std::ostream& operator <<(std::ostream& out, const fraction_t& f) {
+	out << f.to_string();
+	return out;
 }
 
 /*

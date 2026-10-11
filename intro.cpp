@@ -41,13 +41,13 @@ void intro() {
 	std::cout << "-------------------------" << std::endl;
 	f = f + frac5;  // Move assignment (operator =(&&)): результат додавання, що повертається
 	                // оператором +, підлягає руйнуванню f = (move) <--ret--(f + f5) 
-	std::cout << f.to_string() << std::endl;  
+	std::cout << f << std::endl;  
 
 	f = f * frac5;  
-	std::cout << f.to_string() << std::endl;
+	std::cout << f << std::endl;
 
 	f = f / frac5;
-	std::cout << f.to_string() << std::endl;
+	std::cout << f << std::endl;
 
 	delete frac2;
 	delete frac4;
