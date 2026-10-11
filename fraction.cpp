@@ -41,8 +41,8 @@ fraction_t::fraction_t(fraction_t& other) {
 		size_t len = strlen(other.name) + 1;
 		this->name = new char[len];
 		strcpy(this->name, other.name);
-		// std::cout << "Copy constructor: copy from " << (void*)other.name << " to "
-		// 	<< (void*)(this->name) << std::endl;
+		std::cout << "Copy constructor: copy from " << (void*)other.name << " to "
+		 	<< (void*)(this->name) << std::endl;
 	}
 	else {
 		this->name = NULL;
@@ -64,6 +64,10 @@ fraction_t::fraction_t(fraction_t& other) {
 		      A              B               0x123          0x567
 	------[1,2,0x123]----[1,2,0x567]--------"Half\0"--------"Half\0"----------------
   
+    Аналогічна ситуація виникає при присвоюванні: А = В - так само необхідно
+	створювати копії полів-покажчиків.
+	Поєднання конструктора копіювання та відповідного оператора "=" 
+	 називають "семантикою копіювання"
 	*/
 }
 
@@ -144,7 +148,7 @@ fraction_t fraction_t::operator +(const fraction_t& other) {
 	// a/b + c/d = (ad+bc)/bd
 }
 
-fraction_t fraction_t::operator =(const fraction_t& other) {
+fraction_t& fraction_t::operator =(const fraction_t& other) {
 	this->numerator = other.numerator;
 	this->denominator = other.denominator;
 	if (other.name != NULL) {
@@ -159,7 +163,8 @@ fraction_t fraction_t::operator =(const fraction_t& other) {
 	}
 	return *this;
 }
-fraction_t fraction_t::operator =(fraction_t&& other) noexcept {
+
+fraction_t& fraction_t::operator =(fraction_t&& other) noexcept {
 	this->numerator = other.numerator;
 	this->denominator = other.denominator;
 	this->name = other.name;
