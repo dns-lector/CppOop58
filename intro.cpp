@@ -49,6 +49,12 @@ void intro() {
 	f = f / frac5;
 	std::cout << f << std::endl;
 
+	std::cout << -f << std::endl;
+	f += 1;
+	std::cout << f << std::endl;
+	f += frac5;
+	std::cout << f << std::endl;
+
 	delete frac2;
 	delete frac4;
 	delete frac6;

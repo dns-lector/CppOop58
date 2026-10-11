@@ -192,6 +192,22 @@ std::ostream& operator <<(std::ostream& out, const fraction_t& f) {
 	return out;
 }
 
+fraction_t operator -(const fraction_t& f) {
+	return fraction_t(
+		-f.get_numerator(),
+		f.get_denominator()
+	);
+}
+
+void fraction_t::operator += (const fraction_t& other) {
+	this->numerator = this->numerator * other.denominator + this->denominator * other.numerator;
+	this->denominator = this->denominator * other.denominator;
+}
+
+void fraction_t::operator += (int n) {
+	this->numerator += n * this->denominator;
+}
+
 /*
 Правило опису класів (The Rule Of Six):
 При описі класів необхідно обов'язково включити до опису
