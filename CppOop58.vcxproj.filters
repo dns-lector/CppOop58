@@ -27,6 +27,15 @@
     <ClCompile Include="basics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="shop\Product.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shop\Electrical.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shop\Laptop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fraction.h">
@@ -39,6 +48,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shop\Product.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shop\Electrical.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shop\Laptop.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
