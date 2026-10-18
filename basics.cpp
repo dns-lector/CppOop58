@@ -1,6 +1,7 @@
 #include <iostream>
 #include "basics.h"
 #include "shop/Laptop.h"
+#include "shop/Monitor.h"
 
 void basics() {
 	std::cout << "OOP Basics" << std::endl;
@@ -12,6 +13,13 @@ void basics() {
 	acer->setHardware("Intel Core 5, RAM 16GB, SSD 512GB");
 
 	std::cout << acer->toString() << std::endl;
+
+	Monitor* dell = new Monitor();
+	dell->setName("Dell Vision");
+	dell->setDiagonal(32);
+	dell->setPower(120);
+	dell->setPrice(7950);
+	std::cout << dell->toString() << std::endl;
 }
 
 /*

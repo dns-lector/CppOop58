@@ -3,8 +3,9 @@
 
 class Monitor : public Electrical {
 private:
-	double diagonal;
+	double      diagonal;
 public:
-	double getDiagonal() const;
-	void   setDiagonal(double);
+	double      getDiagonal() const;
+	void        setDiagonal(double);
+	std::string toString();
 };
