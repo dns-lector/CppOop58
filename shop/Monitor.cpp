@@ -9,7 +9,7 @@ void Monitor::setDiagonal(double diagonal) {
 	this->diagonal = diagonal;
 }
 
-std::string Monitor::toString() {
+std::string Monitor::toString() const {
 	return std::format(
 		"{} {}'' {} hrn ({} W)",
 		getName(),

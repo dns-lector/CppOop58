@@ -7,15 +7,16 @@ void basics() {
 	// об'єктів різного типу. Формально, об'єкти мають один
 	// тип (базового класу), при цьому фактично є об'єктами
 	// похідних (дочірніх) типів
+
 	Electrical* stock[2];
 
 #pragma region Objects
-	Laptop* acer = new Laptop();
-	acer->setName("Acer Nitro");
-	acer->setPrice(60499);
-	acer->setPower(90);
-	acer->setHardware("Intel Core 5, RAM 16GB, SSD 512GB");
-	std::cout << acer->toString() << std::endl;
+	stock[0] = (new Laptop())
+		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
+		->setPower(90);
+	stock[0]->setName("Acer Nitro");
+	stock[0]->setPrice(60499);
+	std::cout << stock[0]->toString() << std::endl;
 
 	Monitor* dell = new Monitor();
 	dell->setName("Dell Vision");
@@ -25,7 +26,6 @@ void basics() {
 	std::cout << dell->toString() << std::endl;
 #pragma endregion
 
-	stock[0] = acer;
 	stock[1] = dell;
 }
 
