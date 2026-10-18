@@ -5,8 +5,9 @@ double Monitor::getDiagonal() const {
 	return diagonal;
 }
 
-void Monitor::setDiagonal(double diagonal) {
+Monitor* Monitor::setDiagonal(double diagonal) {
 	this->diagonal = diagonal;
+	return this;
 }
 
 std::string Monitor::toString() const {

@@ -8,7 +8,6 @@ public:
 	double      getPower() const;
 	Electrical* setPower(double);
 
-	virtual std::string toString() const = 0;  // pure virtual OR abstract method
 };
 /*
 Абстрактні (чисто віртуальні) методи - ті, які реалізуються у дочірніх класах.

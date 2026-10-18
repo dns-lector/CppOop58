@@ -6,6 +6,6 @@ private:
 	double      diagonal;
 public:
 	double      getDiagonal() const;
-	void        setDiagonal(double);
+	Monitor*    setDiagonal(double);
 	std::string toString() const override;
 };

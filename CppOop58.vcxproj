@@ -155,6 +155,7 @@
     <ClInclude Include="shop\Electrical.h" />
     <ClInclude Include="shop\Laptop.h" />
     <ClInclude Include="shop\Monitor.h" />
+    <ClInclude Include="shop\Periphery.h" />
     <ClInclude Include="shop\Product.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -8,25 +8,23 @@ void basics() {
 	// тип (базового класу), при цьому фактично є об'єктами
 	// похідних (дочірніх) типів
 
-	Electrical* stock[2];
+	Product* stock[2];
 
-#pragma region Objects
 	stock[0] = (new Laptop())
 		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
-		->setPower(90);
-	stock[0]->setName("Acer Nitro");
-	stock[0]->setPrice(60499);
-	std::cout << stock[0]->toString() << std::endl;
+		->setPower(90)
+		->setName("Acer Nitro")
+		->setPrice(60499);
 
-	Monitor* dell = new Monitor();
-	dell->setName("Dell Vision");
-	dell->setDiagonal(32);
-	dell->setPower(120);
-	dell->setPrice(7950);
-	std::cout << dell->toString() << std::endl;
-#pragma endregion
+	stock[1] = (new Monitor())
+		->setDiagonal(32)
+		->setPower(120)
+		->setName("Dell Vision")
+		->setPrice(7950);
 
-	stock[1] = dell;
+	for (auto product : stock) {
+		std::cout << product->toString() << std::endl;
+	}
 }
 
 /*
@@ -87,4 +85,18 @@ void basics() {
 популярних сайтів - форуми, оренда житла/автівок тощо)
 Виписати основні сутності, провести абстрагування - побудувати
 ієрархію класів з абстракціями. Основний результат - діаграма класів.
+-----------------
+Віртуальні методи
+Різниця між віртуальними та невіртуальними методами виникає коли тип
+даних посилання на об'єкт та тип самого об'єкта не є однаковими.
+(посилання через батьківський тип)
+Electrical* stock = new Laptop()
+тип посилання (stock) - Electrical*
+тип об'єкту - Laptop*
+Віртуальні методи викликаються у об'єкта
+  stock->v() -- Laptop::v
+Невіртуальні методи - за типом даних
+  stock->nv() -- Electrical::nv
+Невіртуальні методи створюються за замовчанням,
+для створення віртуальних необхідно додати оператор "virtual"
 */
