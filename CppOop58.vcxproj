@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="basics.cpp" />
     <ClCompile Include="CppOop58.cpp" />
+    <ClCompile Include="data_structures.cpp" />
     <ClCompile Include="fraction.cpp" />
     <ClCompile Include="intro.cpp" />
     <ClCompile Include="shop\Electrical.cpp" />
@@ -150,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="basics.h" />
+    <ClInclude Include="data_structures.h" />
     <ClInclude Include="fraction.h" />
     <ClInclude Include="intro.h" />
     <ClInclude Include="shop\Electrical.h" />

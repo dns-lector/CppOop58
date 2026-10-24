@@ -1,9 +1,11 @@
 #include "intro.h"
 #include "basics.h"
+#include "data_structures.h"
 
 int main()
 {
     // intro();
-    basics();
+    // basics();
+    data_structures();
     return 0;
 }
