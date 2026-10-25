@@ -37,6 +37,16 @@ void data_structures() {
     intList->print();
     intList->insertBefore(15, 2);
     intList->print();
+    std::cout << "removed: " << intList->remove(0) << std::endl;
+    intList->print();
+    std::cout << "removed: " << intList->remove(3) << std::endl;
+    intList->print();
+    std::cout << "removed: " << intList->remove(0) << std::endl;
+    intList->print();
+    std::cout << "removed: " << intList->remove(0) << std::endl;
+    intList->print();
+    std::cout << "removed: " << intList->remove(0) << std::endl;
+    intList->print();
 }
 
 void data_structures_t() {

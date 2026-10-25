@@ -15,8 +15,9 @@ private:
 	ListNode<T>* last  = NULL;
 	size_t size = 0;
 public:
-	void add(T data);
-	void insertBefore(T data, size_t index);
+	void   add(T data);
+	void   insertBefore(T data, size_t index);
+	T      remove(size_t index);
 	size_t getSize() const { return size; }
 
 	void print();
@@ -67,6 +68,9 @@ void LinkedList<T>::insertBefore(T data, size_t index) {
 template<typename T>
 void LinkedList<T>::print() {
 	ListNode<T>* node = first;
+	if (node == NULL) {
+		std::cout << "Empty list" << std::endl;
+	}
 	while (node) {
 		std::cout << node->data << " ";
 		node = node->next;
@@ -74,6 +78,42 @@ void LinkedList<T>::print() {
 	std::cout << std::endl;
 }
 
+template<typename T>
+T LinkedList<T>::remove(size_t index) {
+	if (index < size) {
+		if (index == 0) {  // видаляємо перший елемент
+			ListNode<T>* node = first;
+			T data = node->data;
+			first = first->next;
+			if (first) {
+				first->prev = NULL;
+			}
+			delete node;
+			size -= 1;
+			if (size == 0) {
+				last = NULL;
+			}
+			return data;
+		}
+		if (index == size - 1) {  // видаляємо останній елемент
+			ListNode<T>* node = last;
+			T data = node->data;
+			last = last->prev;
+			last->next = NULL;
+			delete node;
+			size -= 1;
+			return data;
+		}
+		else {
+			// TODO
+			return T(0);
+		}
+	}
+	else {
+		// error
+		return T(0);
+	}
+}
 /*
     node
 0<-[p|d|n]<->[p|d|n]->0
