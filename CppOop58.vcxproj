@@ -142,6 +142,7 @@
     <ClCompile Include="basics.cpp" />
     <ClCompile Include="CppOop58.cpp" />
     <ClCompile Include="data_structures.cpp" />
+    <ClCompile Include="data_structures\linked_list.cpp" />
     <ClCompile Include="fraction.cpp" />
     <ClCompile Include="intro.cpp" />
     <ClCompile Include="shop\Electrical.cpp" />
