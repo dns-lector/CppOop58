@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="basics.h" />
     <ClInclude Include="data_structures.h" />
+    <ClInclude Include="data_structures\linked_list.h" />
     <ClInclude Include="fraction.h" />
     <ClInclude Include="intro.h" />
     <ClInclude Include="shop\Electrical.h" />
