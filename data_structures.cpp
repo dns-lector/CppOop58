@@ -33,6 +33,10 @@ void data_structures() {
     intList->add(20);
     intList->add(30);
     intList->print();
+    intList->insertBefore(5, 0);
+    intList->print();
+    intList->insertBefore(15, 2);
+    intList->print();
 }
 
 void data_structures_t() {
