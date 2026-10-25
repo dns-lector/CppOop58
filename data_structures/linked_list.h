@@ -12,9 +12,12 @@ template<typename T>
 class LinkedList {
 private:
 	ListNode<T>* first = NULL;
+	ListNode<T>* last  = NULL;
+	size_t size = 0;
 public:
 	void add(T data);
 	void insertBefore(T data, size_t index);
+	size_t getSize() const { return size; }
 
 	void print();
 };
@@ -22,16 +25,9 @@ public:
 // #include "linked_list.cpp"
 template<typename T>
 void LinkedList<T>::add(T data) {
-	if (first) {
-		// шукаємо останній
-		ListNode<T>* node = first;
-		while (node->next != NULL) {
-			node = node->next;
-		}
-		// після циклу node вказує на останній елемент списку
-		// 
-		//                                    |попередній = node
-		node->next = new ListNode<T> { data, node, NULL };
+	if (last) {  //                           |попередній = last
+		last->next = new ListNode<T> { data, last, NULL };
+		size += 1;
 	}
 	else {
 		first = new ListNode<T> { data, NULL, NULL };
