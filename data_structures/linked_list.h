@@ -1,5 +1,7 @@
 #pragma once
+#include <format>
 #include <iostream>
+#include <stdexcept>
 
 template<typename T>
 struct ListNode {
@@ -61,6 +63,9 @@ void LinkedList<T>::insertBefore(T data, size_t index) {
 		}
 		else {
 			// помилка - index out of range
+			throw std::range_error(
+				std::format("Max index {} but got {}", size - 1, index)
+			);
 		}
 	}
 }
@@ -192,9 +197,11 @@ try {
   викликаються, трапляється оператор throw:
 
   throw std::range_error("index out of range")
-}
+}                              |
 catch(const std::range_error& ex) {
   дії з оброблення виняткової ситуації з винятком std::range_error
+  деталі винятку можна вилучити з ex.what() --> "index out of range" -
+  те, що передавалось при створенні винятку
 }
 catch(const std::runtime_error& ex) {
   блоків catch може бути декілька, під різні типи винятків

@@ -2,6 +2,26 @@
 #include "data_structures/linked_list.h"
 #include "queue.h"
 #include <iostream>
+#include <stdexcept>
+
+void data_structures() {
+    // Демонстрація виняткових ситуацій
+    LinkedList<int>* intList = new LinkedList<int>();
+    intList->add(10);   // ці команди не мають 
+    intList->add(20);   // винятків в середині і не 
+    intList->add(30);   // повинні вміщуватись в блок try
+    intList->print();   // 
+    try {
+        intList->insertBefore(5, 0);  // у тілі insertBefore є throw
+        intList->print();             // але перша команда не створить виняток
+        intList->insertBefore(15, 5); // тоді як друга - створить
+        intList->print();             // і виконання зупиниться перед даним рядком
+    }
+    catch (const std::range_error& ex) {
+        std::cerr << "Exception: " << ex.what() << std::endl;
+    }
+}
+
 
 template<typename T>   // Шаблонними можуть бути функції та типи (класи, структури)
 void print(T arg) {    // Шаблон вводить "змінну" для типу, традиційно "Т"
@@ -27,7 +47,7 @@ struct fraction {      // Для типів (наприклад, структу�
     }
 };                 
 
-void data_structures() {
+void data_structures_3() {
     std::cout << "Queue demo" << std::endl;
     Queue<int> queue;
     queue.enqueue(1);
