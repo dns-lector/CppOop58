@@ -28,8 +28,24 @@ void data_structures() {
     catch (const std::range_error& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
     }
+    Queue<int> queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    // Вилучення всіх даних з черги
+    // Варіант з винятком - не рекомендований
+    try { while(true)  std::cout << queue.dequeue() << std::endl; }
+    catch (...) {}   // варіант з ігноруванням винятку
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    // варіант без винятків
+    while (!queue.isEmpty())  std::cout << queue.dequeue() << std::endl;
 }
-
+/*
+Д.З. Ввести винятки в методи класу Стек (предмет попередніх ДЗ)
+Прикласти скріншоти прикладів їх перевірки.
+*/
 
 template<typename T>   // Шаблонними можуть бути функції та типи (класи, структури)
 void print(T arg) {    // Шаблон вводить "змінну" для типу, традиційно "Т"

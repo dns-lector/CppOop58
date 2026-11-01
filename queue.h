@@ -25,6 +25,10 @@ public:
 		return queue->getSize();
 	}
 
+	bool isEmpty() {
+		return getLength() == 0;
+	}
+
 	Queue() {
 		queue = new LinkedList<T>();
 	}
