@@ -22,6 +22,12 @@ void data_structures() {
     }
     // intList->insertBefore(15, 5);  виклик без try призводить до 
     // intList->print();              аварійної зупинки програми.
+    try {
+        intList->remove(10);
+    }
+    catch (const std::range_error& ex) {
+        std::cerr << "Exception: " << ex.what() << std::endl;
+    }
 }
 
 

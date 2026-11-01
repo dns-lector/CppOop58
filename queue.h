@@ -1,5 +1,7 @@
 #pragma once
 #include "data_structures/linked_list.h"
+#include <stdexcept>
+
 // реалізація структури даних "черга"
 template<typename T>
 class Queue {
@@ -15,7 +17,7 @@ public:
 			return queue->remove(0);
 		}
 		else {
-			return T(0);
+			throw std::length_error("Queue<T>::dequeue(): Dequeue requested for empty queue");
 		}
 	}
 
@@ -32,8 +34,8 @@ public:
 		// TODO: реалізувати
 	}
 	Queue(Queue<T>&& other) {
-		this->queue = other->queue;
-		other->queue = NULL;
+		this->queue = other.queue;
+		other.queue = NULL;
 	}
 	~Queue() {
 		if(queue) delete queue;

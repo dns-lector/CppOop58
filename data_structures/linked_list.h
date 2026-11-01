@@ -64,7 +64,7 @@ void LinkedList<T>::insertBefore(T data, size_t index) {
 		else {
 			// помилка - index out of range
 			throw std::range_error(
-				std::format("Max index {} but got {}", size - 1, index)
+				std::format("LinkedList<T>::insertBefore: Unable to insert element. Max list index {} but got {}", size - 1, index)
 			);
 		}
 	}
@@ -133,7 +133,9 @@ T LinkedList<T>::remove(size_t index) {
 	}
 	else {
 		// error
-		return T(0);
+		throw std::range_error(
+			std::format("LinkedList<T>::remove: Unable to remove element. Max list index {} but got {}", size - 1, index)
+		);
 	}
 }
 /*
@@ -217,6 +219,11 @@ catch(const std::exception& ex) {
    (не використовувати для організації "далеких" переходів в нормальній роботі)
 - використовувати конкретні (типізовані) винятки, не вживати загальний
    std::exception. Якщо немає потрібного, то краще створити свій (новий)
+   https://en.cppreference.com/cpp/error/exception
+- блоки try поділяти за логікою роботи: погано занадто обтяжувати блок, вміщуючи
+   в нього велику кількість коду, так і, навпаки, оточувати кожну інструкцію
+   власним блоком try-catch. Наприклад, окремий блок для задач зчитування даних
+   та формування з них переліку. Окремий блок для роботи з переліком.
 - формувати детальні повідомлення про помилки, які дозволять 
   = знайти точку помилки
   = дізнатись параметри, що призвели до помилки
