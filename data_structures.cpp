@@ -20,6 +20,8 @@ void data_structures() {
     catch (const std::range_error& ex) {
         std::cerr << "Exception: " << ex.what() << std::endl;
     }
+    // intList->insertBefore(15, 5);  виклик без try призводить до 
+    // intList->print();              аварійної зупинки програми.
 }
 
 
