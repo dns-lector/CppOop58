@@ -196,4 +196,13 @@ try {
 catch(const std::range_error& ex) {
   дії з оброблення виняткової ситуації з винятком std::range_error
 }
+catch(const std::runtime_error& ex) {
+  блоків catch може бути декілька, під різні типи винятків
+  тут "ловиться" виняток std::runtime_error
+}
+catch(const std::exception& ex) {
+  всі винятки є нащадками std::exception, відповідно, даний 
+  блок буде приймати всі винятки, не спіймані вищими блоками.
+}
+
 */
