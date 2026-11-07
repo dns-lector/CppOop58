@@ -23,7 +23,27 @@ public:
 	size_t getSize() const { return size; }
 
 	void print();
+
+	LinkedList<T>* clone() const;
 };
+
+template<typename T>
+LinkedList<T>* LinkedList<T>::clone() const {
+	/*
+	Q1             node->next...
+	 *list1         |          |
+	   *first1 --> [p|d|n]<-->[p|d|n]...[ ] <-- last1
+	clone(res)        |          |       |  
+	   *first2 --> [p|d|n]<-->[p|d|n]...[ ] <-- last2
+	*/
+	LinkedList<T>* res = new LinkedList<T>;
+	ListNode<T>* node = this->first;
+	while (node) {
+		res->add(node->data);
+		node = node->next;
+	}
+	return res;
+}
 
 // #include "linked_list.cpp"
 template<typename T>

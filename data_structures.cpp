@@ -5,6 +5,36 @@
 #include <stdexcept>
 
 void data_structures() {
+    LinkedList<int>* intList = 
+        new LinkedList<int>();
+    // intList->add(10);   
+    // intList->add(20);   
+    // intList->add(30);   
+    intList->print();   
+    // створюємо копію (клон)
+    LinkedList<int>* intList2 = 
+        intList->clone();
+    // виводимо
+    intList2->print();
+    // перевіряємо відсутність зв'язків
+    intList->insertBefore(51, 0);  // щось змінюємо у 
+    intList2->insertBefore(52, 0); // кожному зі списків
+    std::cout << "list1:" << std::endl;
+    intList->print();
+    std::cout << "list2:" << std::endl;
+    intList2->print();
+    std::cout << "--------------" << std::endl;
+    Queue<int> queue;
+    queue.enqueue(1);
+    queue.enqueue(2);
+    queue.enqueue(3);
+    Queue<int> queue2 = std::move(queue);
+    while (!queue2.isEmpty()) {
+        std::cout << queue2.dequeue() << std::endl;
+    }
+}
+
+void data_structures_4() {
     // Демонстрація виняткових ситуацій
     LinkedList<int>* intList = new LinkedList<int>();
     intList->add(10);   // ці команди не мають 
