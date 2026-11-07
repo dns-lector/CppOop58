@@ -25,6 +25,65 @@ public:
 	void print();
 
 	LinkedList<T>* clone() const;
+
+	void clear() {
+		ListNode<T>* node = first;
+		while (node) {
+			first = first->next;
+			delete node;
+			node = first;
+		}
+		first = last = NULL;
+	}
+	/* Д.З. Реалізувати структуру даних Стек з дотриманням "правила шести" */
+	LinkedList() : first{ NULL }, last{ NULL }, size{ 0 } {
+		// Default constructor
+	}
+	LinkedList(const LinkedList<T>& other) {  // Copy constructor
+		ListNode<T>* node = other.first;
+		while (node) {
+			this->add(node->data);
+			node = node->next;
+		}
+	}
+	LinkedList(LinkedList<T>&& other) noexcept :   // Move constructor ('other' will be destroyed)
+		first{ other.first }, last{ other.last }, size{ other.size }
+	{
+		other.first = other.last = NULL;
+	}
+	LinkedList<T>& operator =(const LinkedList<T>& other) {
+		// видаляємо дані, якщо вони є
+		this->clear();
+		// копіюємо дані з іншого переліку
+		ListNode<T>* node = other.first;
+		while (node) {
+			this->add(node->data);
+			node = node->next;
+		}
+	}
+	LinkedList<T>& operator =(LinkedList<T>&& other) {
+		// видаляємо дані, якщо вони є
+		ListNode<T>* node = this->first;
+		while (node) {
+			first = first->next;
+			delete node;
+			node = first;
+		}
+		first = last = NULL;
+		// забираємо (переносимо) дані з іншого переліку
+		this->first = other.first;
+		this->last = other.last;
+		this->size = other.size;
+		// помічаємо інший перелік як порожній
+		other.first = other.last = NULL;
+	}
+	~LinkedList() {  // Destructor
+		while (first) {
+			last = first;
+			first = first->next;
+			delete last;
+		}
+	}
 };
 
 template<typename T>
