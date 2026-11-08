@@ -2,7 +2,16 @@
 #include <memory>
 #include "basics.h"
 
+
 void basics() {
+	std::cout << "OOP Basics" << std::endl;			 // 
+	// LinkedList<Product*> stock;                   // Перелік покажчиків (stock - статичний об'єкт LinkedList, який вже є)
+	// LinkedList<Product*>* stock;					 // Покажчик на перелік покажчиків (stock - покажчик на об'єкт LinkedList, якого ще немає)
+	// LinkedList<std::unique_ptr<Product>> stock;	 // Перелік розумних покажчиків
+	std::unique_ptr<LinkedList<Product*>> stock;	 // Розумний покажчик на перелік
+}
+
+void basics_2() {
 	std::cout << "OOP Basics" << std::endl;
 	// Поліморфізм - поєднання до єдиного масиву (колекції)
 	// об'єктів різного типу. Формально, об'єкти мають один

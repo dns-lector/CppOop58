@@ -5,4 +5,6 @@
 #include "shop/Electrical.h"
 #include "shop/Product.h"
 
+#include "data_structures/linked_list.h"
+
 void basics();
