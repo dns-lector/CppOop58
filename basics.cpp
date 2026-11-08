@@ -16,9 +16,35 @@ void basics() {
 	//   тільки адреса, а не об'єкт за нею
 	
 	// LinkedList<std::unique_ptr<Product>> stock;	 // Перелік розумних покажчиків
-	std::unique_ptr<LinkedList<Product*>> stock;	 // Розумний покажчик на перелік
-}
+	// невдалий варіант - як збільшення пам'яті, так і непотрібні розумні покажчики
 
+	 std::unique_ptr<LinkedList<Product*>> stock =	 // Розумний покажчик на перелік (у "купі")
+		std::make_unique<LinkedList<Product*>>();
+	// оптимальний варіант - покажчик в середині розумного покажчика та
+	// автоматичне видалення після роботи
+
+	// LinkedList<Product*>* stock = new LinkedList<Product*>();
+
+	stock->add((new Laptop())
+		->setHardware("Intel Core 5, RAM 16GB, SSD 512GB")
+		->setPower(90)
+		->setName("Acer Nitro")
+		->setPrice(60499));
+
+	stock->add((new Monitor())
+		->setDiagonal(32)
+		->setPower(120)
+		->setName("Dell Vision")
+		->setPrice(7950));
+
+	stock->print();  // TODO: перевантажити оператор << для відображення даних
+
+	// delete stock;
+}
+/* Д.З. Привести клас вектор до відповідності "правилу шести".
+   Реалізувати колекцію (список) з різних векторів у вигляді розумного покажчика.
+   Наповнити колекцію, вивести її на консоль.*/
+/*
 void basics_2() {
 	std::cout << "OOP Basics" << std::endl;
 	// Поліморфізм - поєднання до єдиного масиву (колекції)
@@ -64,7 +90,7 @@ void basics_2() {
 	}
 	
 }
-
+*/
 /*
 Основні принципи ООП.
 Абстрагування, спадкування, поліморфізм, інкапсуляція.
