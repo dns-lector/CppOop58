@@ -6,7 +6,15 @@
 void basics() {
 	std::cout << "OOP Basics" << std::endl;			 // 
 	// LinkedList<Product*> stock;                   // Перелік покажчиків (stock - статичний об'єкт LinkedList, який вже є)
+	// + автоматично знищиться після завершення ф-ції basics() 
+	// - весь об'єкт stock розміщується у стеку
+	
 	// LinkedList<Product*>* stock;					 // Покажчик на перелік покажчиків (stock - покажчик на об'єкт LinkedList, якого ще немає)
+	// + економія стекової пам'яті, у стеку тільки адреса
+	// - необхідно створити об'єкт: stock = new LinkedList<Product*>();
+	//   та не забути видалити (delete stock), оскільки автоматично звільниться 
+	//   тільки адреса, а не об'єкт за нею
+	
 	// LinkedList<std::unique_ptr<Product>> stock;	 // Перелік розумних покажчиків
 	std::unique_ptr<LinkedList<Product*>> stock;	 // Розумний покажчик на перелік
 }
