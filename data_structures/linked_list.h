@@ -84,6 +84,21 @@ public:
 			delete last;
 		}
 	}
+
+	T& operator[](int index) {   // indexer - індексатор
+		ListNode<T>* node = this->first;
+		while (node && index > 0) {
+			node = node->next;
+			index--;
+		}
+		if (node == NULL) {
+			// помилка - index out of range
+			throw std::range_error(
+				std::format("LinkedList<T>::operator[]: Unable to find element. Max list index {} but got {}", size - 1, index)
+			);
+		}
+		return node->data;
+	}
 };
 
 template<typename T>
