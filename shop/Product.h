@@ -18,6 +18,9 @@ public:
 
 	virtual std::string toString() const = 0;  // pure virtual OR abstract method
 };
+
+std::ostream& operator << (std::ostream& out, const Product* p);
+
 /*
 Абстрактні (чисто віртуальні) методи - ті, які реалізуються у дочірніх класах.
 Їх присутність необхідна для того, щоб мати змогу викликати ці методи,

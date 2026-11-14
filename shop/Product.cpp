@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 #include "Product.h"
 
 std::string Product::getName() const {
@@ -17,4 +18,9 @@ double Product::getPrice() const {
 Product* Product::setPrice(double price) {
 	this->price = price;
 	return this;
+}
+
+std::ostream& operator << (std::ostream& out, const Product* p) {
+	out << p->toString();
+	return out;
 }

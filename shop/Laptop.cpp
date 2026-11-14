@@ -1,5 +1,6 @@
 #include "Laptop.h"
 #include <format>
+#include <iostream>
 
 std::string Laptop::getHardware() const {
 	return hardware;
